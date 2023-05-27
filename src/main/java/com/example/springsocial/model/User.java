@@ -1,5 +1,8 @@
 package com.example.springsocial.model;
+import com.example.springsocial.model.BFAM.UserTag;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -28,8 +31,20 @@ public class User {
 
     @JsonIgnore
     private String password;
+    
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<UserTag> userTags;
 
-    @NotNull
+    
+    public List<UserTag> getUserTags() {
+		return userTags;
+	}
+
+	public void setUserTags(List<UserTag> userTags) {
+		this.userTags = userTags;
+	}
+
+	@NotNull
     @Enumerated(EnumType.STRING)
     private AuthProvider provider;
 
