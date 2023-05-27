@@ -32,17 +32,6 @@ public class User {
     @JsonIgnore
     private String password;
     
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<UserTag> userTags;
-
-    
-    public List<UserTag> getUserTags() {
-		return userTags;
-	}
-
-	public void setUserTags(List<UserTag> userTags) {
-		this.userTags = userTags;
-	}
 
 	@NotNull
     @Enumerated(EnumType.STRING)
