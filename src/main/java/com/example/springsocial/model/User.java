@@ -1,9 +1,10 @@
 package com.example.springsocial.model;
-import com.example.springsocial.model.BFAM.UserTag;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.util.List;
-
+import java.util.HashSet;
+import java.util.Set;
+import com.example.springsocial.model.BFAM.Tag;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -38,8 +39,20 @@ public class User {
     private AuthProvider provider;
 
     private String providerId;
+    
+    @JsonIgnore
+    @ManyToMany(mappedBy = "userstags")
+    private Set<Tag> tag = new HashSet<>();
 
-    public Long getId() {
+    public Set<Tag> getTag() {
+		return tag;
+	}
+
+	public void setTag(Set<Tag> tag) {
+		this.tag = tag;
+	}
+
+	public Long getId() {
         return id;
     }
 
@@ -103,3 +116,6 @@ public class User {
         this.providerId = providerId;
     }
 }
+    
+    
+

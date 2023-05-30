@@ -1,23 +1,38 @@
 package com.example.springsocial.payload.BFAM;
 
 public class UserTagPayload {
-	private Long id;
-	private String tag;
 	
+	private Long userId;
 	
-	public Long getId() {
-		return id;
+    private Long tagId;
+
+	public Long getUserId() {
+		return userId;
 	}
-	public void setId(Long id) {
-		this.id = id;
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
-	public String getTag() {
-		return tag;
+
+	public Long getTagId() {
+		return tagId;
 	}
-	public void setTag(String tag) {
-		this.tag = tag;
+
+	public void setTagId(Long tagId) {
+		this.tagId = tagId;
 	}
+
+	public UserTagPayload(Long userId, Long tagId) {
 	
+		this.userId = userId;
+		this.tagId = tagId;
+	}
+
+	public UserTagPayload() {
+		
+	}
+
+    // Constructors, getters, and setters
 	
 	
 }
