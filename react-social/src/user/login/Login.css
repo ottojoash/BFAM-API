@@ -1,5 +1,6 @@
 .login-container {
     text-align: center;
+
 }
 
 
@@ -7,12 +8,28 @@
     background: #fff;
     box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
     border-radius: 2px;
-    width: 500px;
+    width: 800px;
     display: inline-block;
     margin-top: 30px;
     vertical-align: middle;
     position: relative;    
     padding: 35px;
+}
+
+.btn-block {
+  display: block;
+  width: 50%;
+}  
+
+.or-separator {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+  position: relative;
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-size: 1em;
+  width: 50%;
 }
 
 .social-btn {
