@@ -56,7 +56,7 @@ public class TagController {
     }
     
   //assign tag  to user
-    
+   //many to many mapping
     @PutMapping("/tags/{userId}/tag/{tagId}")
     public ResponseEntity<ApiResponse> assignTagToUser(@PathVariable Long userId, @PathVariable Long tagId) {
     	
