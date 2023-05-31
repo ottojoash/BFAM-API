@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Route,
-  Switch
-} from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Home from '../pages/Home';
 import Login from '../user/login/Login';
@@ -23,17 +20,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      authenticated: false, // Set the initial value to false
+      authenticated: false,
       currentUser: null,
       loading: true
     };
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     authenticated: false,
-  //     currentUser: null,
-  //     loading: true
-  //   }
 
     this.loadCurrentlyLoggedInUser = this.loadCurrentlyLoggedInUser.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
@@ -41,18 +31,21 @@ class App extends Component {
 
   loadCurrentlyLoggedInUser() {
     getCurrentUser()
-    .then(response => {
-      this.setState({
-        currentUser: response,
-        authenticated: true,
-        loading: false
+      .then(response => {
+        this.setState({
+          currentUser: response,
+          authenticated: true,
+          loading: false
+        });
+      })
+      .catch(error => {
+        this.setState({
+          authenticated: false, // Set authenticated to false if there's an error
+          loading: false
+        });
       });
-    }).catch(error => {
-      this.setState({
-        loading: false
-      });  
-    });    
   }
+  
 
   handleLogout() {
     localStorage.removeItem(ACCESS_TOKEN);
@@ -68,31 +61,62 @@ class App extends Component {
   }
 
   render() {
-    if(this.state.loading) {
-      return <LoadingIndicator />
+    if (this.state.loading) {
+      return <LoadingIndicator />;
+    }
+
+    // Redirect to login or signup if not authenticated
+    if (!this.state.authenticated) {
+      return (
+        <Switch>
+          <Route
+            path="/login"
+            render={props => (
+              <Login {...props} authenticated={this.state.authenticated} />
+            )}
+          />
+          <Route
+            path="/signup"
+            render={props => (
+              <Signup {...props} authenticated={this.state.authenticated} />
+            )}
+          />
+          <Redirect to="/login" />
+        </Switch>
+      );
     }
 
     return (
       <div className="app">
         <div className="app-top-box">
-          <Navbar authenticated={this.state.authenticated} onLogout={this.handleLogout} />
+          <Navbar
+            authenticated={this.state.authenticated}
+            onLogout={this.handleLogout}
+          />
         </div>
         <div className="app-body">
           <Switch>
-            <Route exact path="/" component={Home}></Route>           
-            <PrivateRoute path="/profile" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
-              component={Profile}></PrivateRoute>
-            <Route path="/login"
-              render={(props) => <Login authenticated={this.state.authenticated} {...props} />}></Route>
-            <Route path="/signup"
-              render={(props) => <Signup authenticated={this.state.authenticated} {...props} />}></Route>
-            <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}></Route>  
+            <Route exact path="/" component={Home}></Route>
+            <PrivateRoute
+              path="/profile"
+              authenticated={this.state.authenticated}
+              currentUser={this.state.currentUser}
+              component={Profile}
+            ></PrivateRoute>
+            <Route
+              path="/oauth2/redirect"
+              component={OAuth2RedirectHandler}
+            ></Route>
             <Route component={NotFound}></Route>
           </Switch>
         </div>
-        <Alert stack={{limit: 3}} 
-          timeout = {3000}
-          position='top-right' effect='slide' offset={65} />
+        <Alert
+          stack={{ limit: 3 }}
+          timeout={3000}
+          position="top-right"
+          effect="slide"
+          offset={65}
+        />
       </div>
     );
   }
