@@ -1,25 +1,24 @@
+/* Web styles */
 .login-container {
-    text-align: center;
-
+  text-align: center;
 }
 
-
 .login-content {
-    background: #fff;
-    box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
-    border-radius: 2px;
-    width: 800px;
-    display: inline-block;
-    margin-top: 30px;
-    vertical-align: middle;
-    position: relative;    
-    padding: 35px;
+  background: #fff;
+  box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
+  border-radius: 2px;
+  width: 800px;
+  display: inline-block;
+  margin-top: 30px;
+  vertical-align: middle;
+  position: relative;
+  padding: 35px;
 }
 
 .btn-block {
   display: block;
   width: 50%;
-}  
+}
 
 .or-separator {
   border-bottom: 1px solid #eee;
@@ -33,44 +32,74 @@
 }
 
 .social-btn {
-    margin-bottom: 15px;
-    font-weight: 400;
-    font-size: 16px;
+  margin-bottom: 15px;
+  font-weight: 400;
+  font-size: 16px;
 }
 
 .social-btn img {
-    height: 32px;
-    float: left;
-    margin-top: 10px;
+  height: 32px;
+  float: left;
+  margin-top: 10px;
 }
 
 .social-btn.google {
-    margin-top: 7px;
+  margin-top: 7px;
 }
 
 .social-btn.facebook img {
-    height: 24px;
-    margin-left: 3px;
+  height: 24px;
+  margin-left: 3px;
 }
 
 .social-btn.github img {
-    height: 24px;
-    margin-left: 3px;
+  height: 24px;
+  margin-left: 3px;
 }
 
 .signup-link {
-    color: rgba(0, 0, 0, 0.65);
-    font-size: 14px;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 14px;
 }
 
 .login-title {
-    font-size: 1.5em;
-    font-weight: 500;
-    margin-top: 0;
-    margin-bottom: 30px;
-    color: rgba(0, 0, 0, 0.65);
+  font-size: 1.5em;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 30px;
+  color: rgba(0, 0, 0, 0.65);
 }
+
 .form-control {
-    margin-left: -50%;
-    width:50%;
+  margin-left: -50%;
+  width: 50%;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .login-content {
+    width: 100%;
+    margin-top: 20px;
+    padding: 20px;
+  }
+
+  .or-separator {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  .btn-block {
+    width: 100%;
+  }
+
+  .form-control {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .social-btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
 }
