@@ -3,8 +3,8 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
-import AppHeader from '../common/AppHeader';
-import Home from '../home/Home';
+import Navbar from '../components/Navbar';
+import Home from '../pages/Home';
 import Login from '../user/login/Login';
 import Signup from '../user/signup/Signup';
 import Profile from '../user/profile/Profile';
@@ -23,10 +23,17 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      authenticated: false,
+      authenticated: false, // Set the initial value to false
       currentUser: null,
       loading: true
-    }
+    };
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     authenticated: false,
+  //     currentUser: null,
+  //     loading: true
+  //   }
 
     this.loadCurrentlyLoggedInUser = this.loadCurrentlyLoggedInUser.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
@@ -68,7 +75,7 @@ class App extends Component {
     return (
       <div className="app">
         <div className="app-top-box">
-          <AppHeader authenticated={this.state.authenticated} onLogout={this.handleLogout} />
+          <Navbar authenticated={this.state.authenticated} onLogout={this.handleLogout} />
         </div>
         <div className="app-body">
           <Switch>
