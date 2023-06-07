@@ -12,10 +12,12 @@ h1 {
   margin-bottom: 20px;
   margin-left: 35%;
 }
-h2{
+
+h2 {
   margin-left: 45%;
 }
-p{
+
+p {
   margin-left: 35%;
 }
 
@@ -101,5 +103,32 @@ li {
   background-color: #f2f2f2;
   text-align: left;
 }
-/*posts*/
 
+/* Mobile View */
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 20px;
+    margin-left: 0;
+  }
+
+  h2 {
+    margin-left: 0;
+  }
+
+  p {
+    margin-left: 0;
+  }
+
+  textarea {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  button {
+    margin-left: 0;
+  }
+
+  .products-page form label {
+    margin-left: 0;
+  }
+}
