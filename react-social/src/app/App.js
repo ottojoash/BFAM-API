@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import {
-  Route,
-  Switch
-} from 'react-router-dom';
+import { Route, Switch, NavLink } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Home from '../pages/Home';
 import Login from '../user/login/Login';
 import Signup from '../user/signup/Signup';
 import Profile from '../user/profile/Profile';
+import ProductsPage from '../pages/Products';
 import OAuth2RedirectHandler from '../user/oauth2/OAuth2RedirectHandler';
 import NotFound from '../common/NotFound';
 import LoadingIndicator from '../common/LoadingIndicator';
@@ -18,6 +16,8 @@ import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 import './App.css';
+
+
 
 class App extends Component {
   constructor(props) {
@@ -79,12 +79,13 @@ class App extends Component {
               render={(props) => <Login authenticated={this.state.authenticated} {...props} />}></Route>
             <Route path="/signup"
               render={(props) => <Signup authenticated={this.state.authenticated} {...props} />}></Route>
+            <Route path="/products" component={ProductsPage}></Route> {/* Added route for ProductsPage */}
             <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}></Route>  
             <Route component={NotFound}></Route>
           </Switch>
         </div>
         <Alert stack={{limit: 3}} 
-          timeout = {3000}
+          timeout={3000}
           position='top-right' effect='slide' offset={65} />
       </div>
     );
