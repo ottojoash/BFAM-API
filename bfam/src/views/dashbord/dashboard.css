@@ -1,0 +1,23 @@
+/* ExamplePage.css */
+
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 5em;
+}
+
+.card {
+  width: 100px;
+  border-radius: 20px;
+}
+
+@media (max-width: 600px) {
+  .cardContainer {
+    flex-direction: column;
+  }
+
+  .card {
+    width: 100%;
+  }
+}
